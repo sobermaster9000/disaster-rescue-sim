@@ -1,6 +1,9 @@
 // ----- TYPE DEFINITIONS -----
 
-/** @typedef { "fire" | "flood" | "earthquake" } DisasterType */
+/**
+ * Disaster types could vary in final implementation.
+ * @typedef { "fire" | "flood" | "earthquake" } DisasterType
+ */
 
 // ----- CLASS TEMPLATE -----
 
