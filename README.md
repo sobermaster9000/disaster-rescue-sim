@@ -1,4 +1,9 @@
-# Folder structure
+# Disaster Rescue Simulator
+
+A final project for CMSC 122.
+
+
+## Folder structure
 
 - `src` - source code for your kaplay project
 - `dist` - distribution folder, contains your index.html, built js bundle and static assets
@@ -24,4 +29,4 @@ will build your js files into `dist/`
 $ npm run zip
 ```
 
-will build your game and package into a .zip file, you can upload to your server or itch.io / newground etc.
+will build your app and package into a .zip file, you can upload to your server or itch.io / newground etc.
