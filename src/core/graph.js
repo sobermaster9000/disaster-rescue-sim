@@ -1,19 +1,36 @@
+import { AreaNode } from "./areanode.js"
+import { AreaNodeHashTable } from "./areanodehashtable.js"
+
 // ----- TYPE DEFINITIONS -----
 
 /**
- * One undirected, weighted edge. Weight = distance of the path.
- * @typedef {Object} Edge
- * @property {number} from - ID of one endpoint.
- * @property {number} to - ID of the other endpoint.
- * @property {number} weight - Positive distance of path.
+ * One undirected, weighted edge.
+ * Weight = distance of the path.
  */
+export class Edge {
+    /**
+     * @param {number} fromId - ID of one endpoint.
+     * @param {number} toId - ID of the other endpoint.
+     * @param {number} weight - positive distance of path.
+     */
+    constructor(fromId, toId, weight) {
+        this.fromId = fromId;
+        this.toId = toId;
+        this.weight = weight;
+    }
+}
 
-/**
- * One entry in an adjacency list.
- * @typedef {Object} Neighbor
- * @property {number} nodeID - ID of the adjacent node.
- * @property {number} weight - weight of the edge to that node.
- */
+/** One entry in an adjacency list */
+export class Neighbor {
+    /**
+     * @param {number} nodeId - ID of the adjacent node.
+     * @param {number} weight - weight of the edge to that node.
+     */
+    constructor(nodeId, weight) {
+        this.nodeId = nodeId;
+        this.weight = weight;
+    }
+}
 
 // ----- CLASS TEMPLATE -----
 
@@ -24,8 +41,8 @@
 export class Graph {
     /** Creates an empty graph. */
     constructor() {
-        // TODO e.g. define attributes this.nodes (id -> AreaNode), this.adjacency (id -> Neighbor[])
-        throw new Error("Graph constructor: not implemented");
+        this.nodes = new AreaNodeHashTable();
+        this.adjacency = new Array();
     }
 
     /**
