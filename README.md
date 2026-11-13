@@ -29,4 +29,4 @@ will build your js files into `dist/`
 $ npm run zip
 ```
 
-will build your app and package into a .zip file, you can upload to your server or itch.io / newground etc.
+will build your app and package into a .zip file
