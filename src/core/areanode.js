@@ -42,8 +42,14 @@ export class AreaNode {
         description,
         isStart = false
     }) {
-        // TODO
-        throw new Error("AreaNode constructor: not implemented");
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.peopleAffected = peopleAffected;
+        this.severity = severity;
+        this.description = description;
+        this.isStart = isStart;
+        this.isRescued = false
     }
 
     /**
@@ -51,8 +57,7 @@ export class AreaNode {
      * @returns {void}
      */
     markRescued() {
-        // TODO
-        throw new Error("AreaNode.markRescued: not implemented");
+        this.isRescued = true;
     }
 
     // other relevant methods
