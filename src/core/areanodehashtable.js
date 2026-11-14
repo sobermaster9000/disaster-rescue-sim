@@ -119,6 +119,7 @@ export class AreaNodeHashTable {
      */
     constructor(capacity = 31) {
         this.size = 0;
+        this.capacity = capacity;
         this.hashTable = new Array(capacity);
 
         for(let i = 0; i < capacity; i++) {
@@ -152,6 +153,7 @@ export class AreaNodeHashTable {
     insert(node) {
         const idx = this.hash(node.id) % this.capacity;
         this.hashTable[idx].append(node);
+        this.size++;
     }
 
     /**
@@ -163,7 +165,7 @@ export class AreaNodeHashTable {
         let currentNode = this.hashTable[idx].head;
         
         while(currentNode) {
-            if(currentNode.id === key) {
+            if(currentNode.value.id === key) {
                 return true;
             }
             currentNode = currentNode.next;
@@ -171,6 +173,30 @@ export class AreaNodeHashTable {
 
         return false;
     }
+
+    /**
+     * @param {number} key - ID of node to get
+     * @returns {import("./areanode.js").AreaNode | undefined}
+     */
+    get(key) {
+        if(!this.has(key)) {
+            return undefined;
+        }
+
+        const idx = this.hash(key) % this.capacity;
+        let currentNode = this.hashTable[idx].head;
+
+        while(currentNode) {
+            if(currentNode.value.id === key) {
+                return currentNode.value;
+            }
+            currentNode = currentNode.next;
+        }
+
+        // fallback
+        return undefined;
+    }
+
 
     /**
      * @param {number} - ID of node to remove in hash table.
@@ -199,6 +225,7 @@ export class AreaNodeHashTable {
         // attempt to remove key from hashtable linked list
         try {
             this.hashTable[idx].remove(delIdx);
+            this.size--;
         } catch(error) {
             console.log("Couln't remove hash table entry:", error.message);
             return false;
