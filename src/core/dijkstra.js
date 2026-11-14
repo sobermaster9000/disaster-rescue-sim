@@ -1,10 +1,20 @@
-// ----- TYPE DEFINITIONS -----
+// ----- HELPER CLASS TEMPLATES  -----
 
 /**
- * @typedef {Object} DijkstraResult
- * @property {Map<number, number>} distances - nodeId -> shortest total weight from source (unreachable nodes: Infinity, source: 0).
- * @property {Map<number, number>} previous - nodeId -> previous nodeId on the shortest path (source and unreachable nodes: null).
+ * Helper class for Dijkstra's algorithm result.
  */
+export class DijkstraResult {
+    /**
+     * I don't know if we should make our own Map or not (???).
+     * @param {Object} data
+     * @param {Map<number, number>} data.distances - nodeId -> shortest total weight form source (unreachable nodes: Infinity, source: 0).
+     * @param {Map<number, number>} data.previous - nodeId -> previous nodeId on the shortest path (sources and unreachable nodes: null).
+     */
+    constructor({ distances, previous }) {
+        this.distances = distances;
+        this.previous = previous;
+    }
+}
 
 // ----- FUNCTION TEMPLATES -----
 
