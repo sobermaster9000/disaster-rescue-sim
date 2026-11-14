@@ -1,4 +1,4 @@
-// ----- HELPER CLASS TEMPLATE -----
+// ----- HELPER CLASS TEMPLATES -----
 
 /**
  * Disjoint Set Union (Union-Find) helper class for Kruskal's Algorithm
@@ -33,11 +33,27 @@ export class DisjointSet {
     }
 }
 
+/**
+ * Helper class for Kruskal's algorithm MST result.
+ */
+export class MSTResult {
+    /**
+     * @param {Object} data
+     * @param {import("/.graph.js").Edge[]} data.edges - edges in the MST.
+     * @param {number} data.totalWeight - sum of edge weights in `edges`.
+     */
+    constructor({ edges, totalWeight }) {
+        this.edges = edges;
+        this.totalWeight = totalWeight;
+    }
+}
+
 // ----- FUNCTION TEMPLATE -----
 
 /**
  * Performs Kruskal's MST algorithm on aleady rescued/visited nodes.
  * Only edges whose both endpoints are in `nodeIds` are considered.
+ * Parameters can be changed as long as it outputs a valid MST.
  *
  * Example:
  *      rescued = new Set({0, 2, 1}); // edges 0-1 (4), 0-2 (1), 2-1 (2)
@@ -45,7 +61,7 @@ export class DisjointSet {
  *
  * @param {import("./graph.js").Graph} graph
  * @param {Set<number>} nodeIds - IDs of the rescued/visited nodes.
- * @returns {import("./prim.js").MSTResult}
+ * @returns {MSTResult}
  */
 export function kruskal(graph, nodeIds) {
     // TODO
